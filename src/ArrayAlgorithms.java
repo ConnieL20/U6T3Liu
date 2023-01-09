@@ -81,12 +81,24 @@ public class ArrayAlgorithms {
      *  This method MODIFIED the original array
      *  PRECONDITION: wordList.length > 0
      */
+//    public static void makeUppercase(String[] wordList) {
+//    // IMPLEMENT ME using the most appropriate for loop!
+//        for (int i = 0; i < wordList.length; i++){
+//            wordList[i] = wordList[i].toUpperCase();
+//        }
+//    }
+
     public static void makeUppercase(String[] wordList) {
-    // IMPLEMENT ME using the most appropriate for loop!
-        for (int i = 0; i < wordList.length; i++){
-            wordList[i] = wordList[i].toUpperCase();
+        String[] upperStrs = new String[wordList.length];
+
+        for (int i = 0; i < wordList.length; i++) {
+            upperStrs[i] = wordList[i].toUpperCase();
         }
+
+        // set wordList to the newList
+        wordList = upperStrs;
     }
+
 
     /** Returns a NEW array of ints that contains the higher value of each pair
      *  of elements at the same index in two other equally-sized arrays of ints
@@ -142,14 +154,18 @@ public class ArrayAlgorithms {
     public static int longestStreak(int[] nums) {
         // IMPLEMENT ME using the most appropriate for loop!
         int longest = 1;
+        int streak = 1;
         for (int i = 0; i < nums.length - 1; i++){
             if (nums[i] == nums[i + 1]){
                 longest++;
+                if (longest > streak){
+                    streak = longest;
+                }
             } else {
                 longest = 1;
             }
         }
-        return longest;
+        return streak;
     }
 
 
